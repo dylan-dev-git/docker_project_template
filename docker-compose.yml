@@ -1,0 +1,32 @@
+version: '3'
+
+services: 
+  PROJECTNAME_ng12:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: web.dockerfile
+    ports: 
+      - 4200:4200
+    environment: 
+      SHELL: /bin/bash
+    volumes: 
+      - type: bind
+        source: ./web
+        target: /home/dylan
+  
+  PROJECTNAME_api:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    ports: 
+      - 7501:7501
+    environment: 
+      SHELL: /bin/bash
+    volumes: 
+      - type: bind
+        source: ./api
+        target: /home/dylan
